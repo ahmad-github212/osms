@@ -1,6 +1,7 @@
 <?php
 session_start();
 define('TITLE', 'Success');
+define('PAGE', 'assets');
 include('includes/header.php'); 
 include('../dbConnection.php');
 
@@ -15,8 +16,8 @@ $result = $conn->query($sql);
 if($result->num_rows == 1){
  $row = $result->fetch_assoc();
  echo "<div class='col-sm-6 ml-5 mt-5'>
- <h3 class='text-center'>Customer Bill</h3>
- <table class='table'>
+ <h3 class='text-center text-white font-weight-bold'>Customer Bill</h3>
+ <table class='table text-white font-weight-bold'>
   <tbody>
   <tr>
     <th>Customer ID</th>
@@ -50,12 +51,15 @@ if($result->num_rows == 1){
    <th>Date</th>
    <td>".$row['cpdate']."</td>
   </tr>
-   <tr>
-    <td><form class='d-print-none'><input class='btn btn-danger' type='button' value='Print' onClick='window.print()'></form></td>
-    <td><a href='assets.php' class='btn btn-secondary d-print-none'>Close</a></td>
-  </tr>
+  
   </tbody>
- </table> </div>
+
+ </table> 
+ <div class='text-center d-print-none'>
+    <input class='btn btn-danger' type='button' value='Print' onClick='window.print()'>
+    <a href='assets.php' class='btn btn-secondary d-print-none '>Close</a>
+    </div>
+ </div>
  ";
 
 } else {

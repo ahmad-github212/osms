@@ -1,7 +1,7 @@
 <?php 
 define('TITLE', 'Requester Feedback');
 define('PAGE', 'RequesterFeedback');
-include('includes/header.php');
+//include('includes/header.php');
 include('../dbConnection.php');
 session_start();
 
@@ -10,6 +10,8 @@ if($_SESSION['is_login']==true){
 }else{
     echo"<script>location.href='RequesterLogin.php';</script>" ;
 }
+
+include('includes/header.php');
 
 $sql = "SELECT r_name, r_email FROM requesterlogin_tb WHERE r_email= '$rEmail'" ;
 $result = $conn->query($sql);

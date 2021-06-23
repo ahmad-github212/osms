@@ -1,7 +1,7 @@
 <?php 
 define('TITLE', 'Status');
 define('PAGE', 'CheckStatus');
-include('includes/header.php');
+//include('includes/header.php');
 include('../dbConnection.php');
 session_start();
 
@@ -10,6 +10,7 @@ if($_SESSION['is_login']==true){
 }else{
     echo"<script>location.href='RequesterLogin.php';</script>" ;
 }
+include('includes/header.php');
 ?>
 
 <!-- start 2nd column -->
@@ -37,7 +38,7 @@ if(isset($_REQUEST['search'])){
 ?>
 
 <h3 class="text-center mt-5">Assigned Work Details</h3>
-<table class="table table-bordered">
+<table class="table table-bordered  text-white ">
 <tbody>
 <tr>
 <td>Request ID</td>

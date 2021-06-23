@@ -19,6 +19,7 @@
 
   <style>
    body{
+       font-weight:bold;
        background-image:url('../images/image7.jpg');
         
     background-size: cover;
@@ -87,6 +88,9 @@
  <li class="nav-item"><a class="nav-link <?php if(PAGE == 'feedbacks'){echo 'active';} ?>"
      href="feedbacksOfRequesters.php"><i class="fas fa-comment-dots"></i>Feedbacks</a></li>
 
+    <!-- <li class="nav-item"><a class="nav-link <?php if(PAGE == 'transactionDetails'){echo 'active';} ?>"
+     href="transactionDetails.php"><i class="fas fa-table"></i>Txn Details</a></li>
+-->
 
     <li class="nav-item"><a class="nav-link <?php if(PAGE == 'changepass'){echo 'active';} ?>" 
     href="changepass.php"><i class="fas fa-key"></i>Change Password</a></li>

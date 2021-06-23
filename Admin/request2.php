@@ -17,10 +17,10 @@ else{
 
 <div class="col-sm-4 mb-5" >
 <?php 
-$sql = "SELECT request_id, request_info, request_desc, requester_date FROM submitrequest_tb" ;
+$sql = "SELECT request_id, request_info, request_desc, request_date FROM submitrequest_tb" ;
 $result = $conn->query($sql);
 
-if($result->num_rows > 0){
+if($result->num_rows>0){
 
 for($i=1; $i<4; $i++)
 {
@@ -41,7 +41,7 @@ $row = $result->fetch_assoc();
          echo '</p>';
 
          echo '<p class="card-text text-primary">';
-         echo 'Request Date: '.$row['requester_date'];
+         echo 'Request Date: '.$row['request_date'];
          echo '</p>';
 
          
@@ -63,7 +63,7 @@ $row = $result->fetch_assoc();
 
 <?php include('assignworkform2.php'); ?>
 
-<div class="row"> <!--start 3rd row -->
+<div class="row" style="opacity:0.83;"> <!--start 3rd row -->
  <!-- start 3rd row columns-->
 <?php 
 
@@ -85,7 +85,7 @@ $row = $result->fetch_assoc();
          echo '</p>';
 
          echo '<div class="card-text text-primary" >';
-         echo 'Request Date: '.$row['requester_date'];
+         echo 'Request Date: '.$row['request_date'];
          echo '</div>';
 
           echo '<div style="float:right;" class="mt-3" >' ;

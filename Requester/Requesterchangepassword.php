@@ -2,7 +2,7 @@
 <?php
 define('TITLE', 'Change Password');
 define('PAGE', 'Requesterchangepassword');
-include('includes/header.php');
+//include('includes/header.php');
 include('../dbConnection.php');
 session_start();
 if($_SESSION['is_login']){
@@ -10,6 +10,8 @@ if($_SESSION['is_login']){
 } else {
  echo "<script> location.href='RequesterLogin.php'; </script>";
 }
+
+include('includes/header.php');
 
  $rEmail = $_SESSION['rEmail'];
  if(isset($_REQUEST['passupdate'])){
@@ -20,7 +22,7 @@ if($_SESSION['is_login']){
     $sql = "SELECT * FROM requesterlogin_tb WHERE r_email='$rEmail'";
     $result = $conn->query($sql);
     if($result->num_rows == 1){
-     $rPass = $_REQUEST['rPassword'];
+     $rPass =  password_hash($_REQUEST['rPassword'],PASSWORD_BCRYPT); //$_REQUEST['rPassword'];
      $sql = "UPDATE requesterlogin_tb SET r_password = '$rPass' WHERE r_email = '$rEmail'";
       if($conn->query($sql) == TRUE){
        // below msg display on form submit success

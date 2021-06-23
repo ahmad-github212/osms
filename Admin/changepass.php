@@ -18,7 +18,7 @@ session_start();
     $sql = "SELECT * FROM adminlogin_tb WHERE a_email='$aEmail'";
     $result = $conn->query($sql);
     if($result->num_rows == 1){
-     $aPass = $_REQUEST['aPassword'];
+     $aPass =  $_REQUEST['aPassword'];
      $sql = "UPDATE adminlogin_tb SET a_password = '$aPass' WHERE a_email = '$aEmail'";
       if($conn->query($sql) == TRUE){
        // below msg display on form submit success

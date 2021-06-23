@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- bootstrap css -->
-   <!-- <link rel="stylesheet" href="css/bootstrap.min.css">
--->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
     <!-- bootstrap cdn -->
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -126,6 +126,8 @@
         <li class="nav-item"><a href="#registration" class="nav-link">Registration</a></li>
         <li class="nav-item"><a href="Requester/RequesterLogin.php" class="nav-link">Login</a></li>
         <li class="nav-item"><a href="#Contact" class="nav-link">Contact</a></li>
+        <li class="nav-item"><a href="product.php" class="nav-link" target="_blank">Products</a></li>
+        
       </ul>
     </div>
   </nav> <!-- End Navigation -->
@@ -133,7 +135,7 @@
 
 <!-- Start Header Jumbotron   -->
 
-  <div class=" jumbotron back-image" style="background-image: url(images/image7.jpg);"  >
+  <div class=" jumbotron back-image" style="background-image: url(images/image7.jpg);" >
     <div class="myclass mainHeading">
       <h1 class="text-uppercase text-danger font-weight-bold m-3">Welcome to OSMS</h1>
       <p class="fst-italic pclass m-3 text-white">Customer's Happiness is our Aim</p>
@@ -220,62 +222,41 @@ if($result->num_rows>0){
     <div class="container-fluid">
       <h2 class="text-center mb-3 text-dark">Happy Customers</h2>
         <div class="row slider">
-         <div class="col-md-12">
-                <div class="details bg-secondary">
-                     <div><?php echo '<span>User : '.$names[0].'</span>'; echo '<br><span>How Was Our Service? '.$services[0].'</span>';
-                        echo '<br><span>Ratings : '.$rates[0].'/5 <i class="fas fa-star"></i></span>'; ?></div>
-                   <p>How Was Your Experience? <br>"<?php echo $experiences[0]; ?>"
-                    </p>
-                    <a href="javascript:void();" class="readmore-btn">Read More</a>
-                </div>
+         <?php 
+        if((count($names)>3) && (count($rates)>3) && (count($services)>3) && (count($experiences)>3)){
+            for($i=0;$i<count($names);$i++){
+            echo '<div class="col-md-12">
+            <div class="details bg-secondary">
+            <div><span>User : '.$names[$i].'</span><br><span>How Was Our Service? '.$services[$i].'</span><br>
+            <span>Ratings : '.$rates[$i].' /5 <i class="fas fa-star"></i></span>
             </div>
-             <div class="col-md-12">
-                <div class="details bg-secondary">
-                     <div><?php echo '<span>User : '.$names[1].'</span>'; echo '<br><span>How Was Our Service? '.$services[1].'</span>';
-                        echo '<br><span>Ratings : '.$rates[1].'/5 <i class="fas fa-star"></i></span>'; ?></div>
-                   <p>How Was Your Experience? <br>"<?php echo $experiences[1]; ?>"
-                    </p>
-                    <a href="javascript:void();" class="readmore-btn">Read More</a>
-                </div>
+            <p>How Was Your Experience? <br>'.$experiences[$i].'</p>
+            <a href="javascript:void();" class="readmore-btn">Read More</a>
             </div>
-             <div class="col-md-12">
-                <div class="details bg-secondary">
-                     <div><?php echo '<span>User : '.$names[2].'</span>'; echo '<br><span>How Was Our Service? '.$services[2].'</span>';
-                        echo '<br><span>Ratings : '.$rates[2].'/5 <i class="fas fa-star"></i></span>'; ?></div>
-                   <p>How Was Your Experience? <br>"<?php echo $experiences[2]; ?>"
-                    </p>
-                    <a href="javascript:void();" class="readmore-btn">Read More</a>
-                </div>
+            </div>';
+            }
+        }
+        else{
+            $test_names = ["Sohan", "Shadab", "Rajkumar"];
+            $test_rates = [4, 5, 4];
+            $test_services = ["Good", "Very Good", "Excellent"];
+            $test_experiences = ["Services are awesome and works are efficient", "Very Good Start-up", 
+            "New way of repairing"];
+            
+            for($i=0;$i<3;$i++){
+            echo '<div class="col-md-12">
+            <div class="details bg-secondary">
+            <div><span>User : '.$test_names[$i].'</span><br><span>How Was Our Service? '.$test_services[$i].'</span><br>
+            <span>Ratings : '.$test_rates[$i].' /5 <i class="fas fa-star"></i></span>
             </div>
-            <div class="col-md-12">
-                <div class="details bg-secondary">
-                     <div><?php echo '<span>User : '.$names[3].'</span>'; echo '<br><span>How Was Our Service? '.$services[3].'</span>';
-                        echo '<br><span>Ratings : '.$rates[3].'/5 <i class="fas fa-star"></i></span>'; ?></div>
-                   <p>How Was Your Experience? <br>"<?php echo $experiences[3]; ?>"
-                    </p>
-                    <a href="javascript:void();" class="readmore-btn">Read More</a>
-                </div>
+            <p>How Was Your Experience? <br>'.$test_experiences[$i].'</p>
+            <a href="javascript:void();" class="readmore-btn">Read More</a>
             </div>
+            </div>';
+            }
+        }
 
-             <div class="col-md-12">
-                <div class="details bg-secondary">
-                     <div><?php echo '<span>User : '.$names[4].'</span>'; echo '<br><span>How Was Our Service? '.$services[4].'</span>';
-                        echo '<br><span>Ratings : '.$rates[4].'/5 <i class="fas fa-star"></i></span>'; ?></div>
-                   <p>How Was Your Experience? <br>"<?php echo $experiences[4]; ?>"
-                    </p>
-                    <a href="javascript:void();" class="readmore-btn">Read More</a>
-                </div>
-            </div>
-
-             <div class="col-md-12">
-                <div class="details bg-secondary">
-                     <div><?php echo '<span>User : '.$names[5].'</span>'; echo '<br><span>How Was Our Service? '.$services[5].'</span>';
-                        echo '<br><span>Ratings : '.$rates[5].'/5 <i class="fas fa-star"></i></span>'; ?></div>
-                   <p>How Was Your Experience? <br>"<?php echo $experiences[5]; ?>"
-                    </p>
-                    <a href="javascript:void();" class="readmore-btn">Read More</a>
-                </div>
-            </div>
+        ?>  
 
            
         </div>
@@ -346,10 +327,10 @@ Phone: 1234556765<br>
 
     
     <!-- Javascript -->
-   <!-- <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
--->
+
     <script src="js/all.min.js"></script>
 
   <!-- jquery cdn -->

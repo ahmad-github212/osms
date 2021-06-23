@@ -1,4 +1,16 @@
+<?php 
+/*
+$rEmail= ;
+$sql_img = "SELECT r_imageName FROM requesterlogin_tb WHERE r_email= '$rEmail'" ;
+$result_img = $conn->query($sql_img);
+$profileImage = "";
+if($result_img->num_rows>0){
+    $row = $result_img->fetch_assoc() ;
+    $GLOBALS['profileImage'] = $row['r_imageName'];
+}*/
+//$profileImage = $_SESSION['profilePic'];
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -38,7 +50,7 @@
     }
     </style>
 </head>
-<body class="text-white">
+<body class="text-white" style="font-weight:bold;">
     <!-- top nav bar -->
     <nav class="navbar  navbar-dark fixed-top  flex-md-nowrap p-1 shadow-lg " style="background-color:#0B0C10; height:12%;">
     <a href="RequesterProfile.php" class="navbar-brand col-sm-3 col-md-2 mr-0" style="font-size:35px;">OSMS</a>
@@ -52,7 +64,13 @@
     <nav class="col-sm-2 bg-secondary sidebar py-4"> <!-- start sidebar 1st column -->
     <div class="sidebar-sticky">
     <ul class="nav flex-column d-print-none">
-    <li class="text-center"><img src="../upload-images/<?php echo $_SESSION['profilePic']; ?>" class="img-fluid mb-3" alt="avt1" style="border-radius:100px;"></li>
+    
+    <?php //if(isset($profileImage)){echo $profileImage;}else {echo "default.png" ;} ?>
+<?php //echo $_SESSION['profilePic']; ?>
+    <li class="text-center"><img src="../upload-images/<?php 
+    if(isset($_SESSION['profilePic'])){echo $_SESSION['profilePic'];}else {echo "default.png" ;} ?>" 
+    class="img-fluid mb-3" alt="Error Img" style="border-radius:50%;"></li>
+    
     <li class="nav-item"><a class="nav-link <?php if(PAGE == 'RequesterProfile'){echo 'active';} ?>" href="RequesterProfile.php"><i class="fas fa-user"></i>Profile</a></li>
     <li class="nav-item"><a class="nav-link <?php if(PAGE == 'SubmitRequest'){echo 'active';} ?>" href="SubmitRequest.php"><i class="fab fa-accessible-icon"></i>Submit Request</a></li>
     <li class="nav-item"><a class="nav-link <?php if(PAGE == 'CheckStatus'){echo 'active';} ?>" href="CheckStatus.php"><i class="fas fa-align center"></i>Service Status</a></li>

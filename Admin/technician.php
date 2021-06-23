@@ -20,7 +20,7 @@ else{
 $sql = "SELECT * FROM technician_tb";
 $result= $conn->query($sql);
 if($result->num_rows>0){
-    echo '<table class="table">';
+    echo '<table class="table table-hover">';
     echo '<thead>';
     echo '<tr class="bg-dark text-white" style="opacity:0.85;">';
     echo '<th scope="col">Emp ID</th>';

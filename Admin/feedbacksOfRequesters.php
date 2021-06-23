@@ -18,8 +18,9 @@ else{
 <?php 
 $sql_positive =  "SELECT * FROM  positivefeedback_tb";
 $result_postive = $conn->query($sql_positive);
-if($result_postive->num_rows>0){
 $email_positive_fbd = [];
+if($result_postive->num_rows>0){
+//$email_positive_fbd = [];
 while($row_positive = $result_postive->fetch_assoc()){
     array_push($email_positive_fbd, $row_positive['email']);
 }

@@ -24,16 +24,17 @@ if($_REQUEST['rName'] == ""){
     $passmsg =  '<div class="alert alert-warning col-sm-6 ml-5 mt-2" role="alert">Fill All Fields</div>';
 }
 else{
-    if(isset($_FILES['rImageUpdate'])){
+    if(!($_FILES['rImageUpdate']['name']=="")){
+        
         $rName = $_REQUEST['rName'];
         $filename = $_FILES['rImageUpdate']['name'];
         $tempname = $_FILES['rImageUpdate']['tmp_name'];
         move_uploaded_file($tempname, '../upload-images/'. $filename);
         $oldimage  =  $_SESSION['profilePic'] ;
-        
+        //echo 'hello';
         if($oldimage){
         unlink('../upload-images/'.$oldimage);
-        }
+        } 
          $_SESSION['profilePic']= $filename ;
         $sql = "UPDATE requesterlogin_tb SET r_name = '$rName', r_imageName='$filename' WHERE r_email='$rEmail'";
          if($conn->query($sql)==TRUE){
@@ -43,6 +44,16 @@ else{
         $passmsg = '<div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert">Unable to Update</div>';
     }
     }
+    if($_FILES['rImageUpdate']['name']==""){
+        $sql = "UPDATE requesterlogin_tb SET r_name = '$rName' WHERE r_email='$rEmail'";
+         if($conn->query($sql)==TRUE){
+        $passmsg = '<div class="alert alert-success col-sm-6 ml-5 mt-2" role="alert">Updated Successfully</div>';
+    }
+    else{
+        $passmsg = '<div class="alert alert-danger col-sm-6 ml-5 mt-2" role="alert">Unable to Update </div>';
+    }
+    }
+  
 
   /*  $rName = $_REQUEST['rName'];
      $sql = "UPDATE requesterlogin_tb SET r_name = '$rName' WHERE r_email='$rEmail'";

@@ -1,7 +1,7 @@
 <?php 
 define('TITLE', 'Submit Request');
 define('PAGE', 'SubmitRequest');
-include('includes/header.php');
+//include('includes/header.php');
 include('../dbConnection.php');
 session_start();
 
@@ -9,6 +9,16 @@ if($_SESSION['is_login']==true){
     $rEmail= $_SESSION['rEmail'];
 }else{
     echo"<script>location.href='RequesterLogin.php';</script>" ;
+}
+
+$sql = "SELECT r_imageName FROM requesterlogin_tb WHERE r_email= '$rEmail'" ;
+$result = $conn->query($sql);
+$row= $result->fetch_assoc();
+
+if($result->num_rows==1){
+    //$row= $result->fetch_assoc();
+    //$rName = $row['r_name'];  
+    $_SESSION['profilePic'] = $row['r_imageName'];
 }
 
 //checking for empty fields
@@ -36,7 +46,7 @@ if(isset($_REQUEST['submitrequest'])){
         $rdate = $_REQUEST['requestdate'];
 
         $sql = "INSERT INTO submitrequest_tb(request_info, request_desc, requester_name, requester_add1, requester_add2
-        , requester_city, requester_state, requester_zip, requester_email, requester_mobile, requester_date) VALUES('$rinfo', 
+        , requester_city, requester_state, requester_zip, requester_email, requester_mobile, request_date) VALUES('$rinfo', 
         '$rdesc', '$rname', '$radd1', '$radd2', '$rcity', '$rstate', '$rzip', '$remail', '$rmobile', '$rdate')";
 
         if($conn->query($sql)==true){
@@ -50,6 +60,7 @@ if(isset($_REQUEST['submitrequest'])){
         }
     }
 }
+include('includes/header.php');
 ?>
 
  <div class="col-sm-6 col-md-8 mt-5"> <!-- start service request form 2nd column-->
